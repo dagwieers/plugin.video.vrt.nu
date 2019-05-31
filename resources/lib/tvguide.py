@@ -9,9 +9,9 @@ import json
 import dateutil.parser
 import dateutil.tz
 
-try:
+try:  # Python 3
     from urllib.request import build_opener, install_opener, ProxyHandler, urlopen
-except ImportError:
+except ImportError:  # Python 2
     from urllib2 import build_opener, install_opener, ProxyHandler, urlopen
 
 from resources.lib import CHANNELS, actions, metadatacreator, statichelper
@@ -166,7 +166,7 @@ class TVGuide:
                 end_time = end_time + timedelta(days=1)
             metadata.duration = (end_time - start_time).total_seconds()
             metadata.plot = '[B]%s[/B]\n%s\n%s - %s\n[I]%s[/I]' % (title, datelong, start, end, channel.get('label'))
-            metadata.brands = [channel.get('studio')]
+            metadata.brands.append(channel.get('studio'))
             metadata.mediatype = 'episode'
             if self._showfanart:
                 thumb = episode.get('image', 'DefaultAddonVideo.png')

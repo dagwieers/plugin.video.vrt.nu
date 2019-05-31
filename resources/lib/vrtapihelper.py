@@ -6,10 +6,10 @@ from __future__ import absolute_import, division, unicode_literals
 from resources.lib import CHANNELS, actions, metadatacreator, statichelper
 from resources.lib.helperobjects import TitleItem
 
-try:
+try:  # Python 3
     from urllib.parse import urlencode, unquote
     from urllib.request import build_opener, install_opener, ProxyHandler, urlopen
-except ImportError:
+except ImportError:  # Python 2
     from urllib import urlencode
     from urllib2 import build_opener, install_opener, ProxyHandler, urlopen, unquote
 
@@ -66,7 +66,7 @@ class VRTApiHelper:
             metadata = metadatacreator.MetadataCreator()
             metadata.tvshowtitle = tvshow.get('title', '???')
             metadata.plot = statichelper.unescape(tvshow.get('description', '???'))
-            metadata.brands = tvshow.get('brands')
+            metadata.brands.extend(tvshow.get('brands', []))
             metadata.permalink = statichelper.shorten_link(tvshow.get('targetUrl'))
             # NOTE: This adds episode_count to label, would be better as metadata
             # title = '%s  [LIGHT][COLOR yellow]%s[/COLOR][/LIGHT]' % (tvshow.get('title', '???'), tvshow.get('episode_count', '?'))
@@ -229,7 +229,7 @@ class VRTApiHelper:
 
             metadata.duration = (episode.get('duration', 0) * 60)  # Minutes to seconds
             metadata.plot = statichelper.convert_html_to_kodilabel(episode.get('description'))
-            metadata.brands = episode.get('programBrands') or episode.get('brands')
+            metadata.brands.extend(episode.get('programBrands', []) or episode.get('brands', []))
             metadata.geolocked = episode.get('allowedRegion') == 'BE'
             if display_options.get('showShortDescription'):
                 short_description = statichelper.convert_html_to_kodilabel(episode.get('shortDescription'))
@@ -318,7 +318,7 @@ class VRTApiHelper:
         metadata.tvshowtitle = episode.get('program')
         metadata.plot = statichelper.convert_html_to_kodilabel(episode.get('programDescription'))
         metadata.plotoutline = statichelper.convert_html_to_kodilabel(episode.get('programDescription'))
-        metadata.brands = episode.get('programBrands') or episode.get('brands')
+        metadata.brands.extend(episode.get('programBrands', []) or episode.get('brands', []))
         metadata.geolocked = episode.get('allowedRegion') == 'BE'
         metadata.season = episode.get('seasonTitle')
 
