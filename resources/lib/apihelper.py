@@ -391,6 +391,12 @@ class ApiHelper:
             metadata.plotoutline = episode.get('subtitle')
             metadata.subtitle = episode.get('subtitle')
         metadata.season = episode.get('seasonTitle')
+        # Add proper year information when season falls in range
+        try:
+            if int(episode.get('seasonTitle')) in range(1900, datetime.now().year + 1):
+                metadata.year = int(episode.get('seasonTitle'))
+        except ValueError:
+            pass
         metadata.episode = episode.get('episodeNumber')
         metadata.mediatype = episode.get('type', 'episode')
         metadata.permalink = statichelper.shorten_link(episode.get('permalink')) or episode.get('externalPermalink')
