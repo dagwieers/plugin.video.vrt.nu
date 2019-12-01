@@ -137,7 +137,8 @@ class Metadata:
         # GO TO PROGRAM
         if api_data.get('programType') != 'oneoff':
             if plugin.path.startswith(('/favorites/offline', '/favorites/recent', '/offline', '/recent',
-                                       '/resumepoints/continue', '/resumepoints/watchlater', '/tvguide')):
+                                       '/resumepoints/continue', '/resumepoints/watchlater', '/search',
+                                       '/tvguide')):
                 context_menu.append((
                     localize(30417),  # Go to program
                     'Container.Update(%s)' % url_for('programs', program=program, season='allseasons')
