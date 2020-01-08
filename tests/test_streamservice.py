@@ -15,15 +15,10 @@ try:
 except ImportError:
     from urllib2 import HTTPError
 
+import xbmcaddon
 from data import CHANNELS
 from streamservice import StreamService
 from tokenresolver import TokenResolver
-
-xbmc = __import__('xbmc')
-xbmcaddon = __import__('xbmcaddon')
-xbmcgui = __import__('xbmcgui')
-xbmcplugin = __import__('xbmcplugin')
-xbmcvfs = __import__('xbmcvfs')
 
 addon = xbmcaddon.Addon()
 addon.settings['usedrm'] = 'false'

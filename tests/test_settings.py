@@ -5,15 +5,11 @@
 # pylint: disable=invalid-name
 
 from __future__ import absolute_import, division, print_function, unicode_literals
+import sys
 import unittest
+import xbmcaddon
 from addon import plugin
 from kodiutils import open_settings
-
-xbmc = __import__('xbmc')
-xbmcaddon = __import__('xbmcaddon')
-xbmcgui = __import__('xbmcgui')
-xbmcplugin = __import__('xbmcplugin')
-xbmcvfs = __import__('xbmcvfs')
 
 addon = xbmcaddon.Addon()
 

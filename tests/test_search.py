@@ -7,16 +7,11 @@
 
 from __future__ import absolute_import, division, print_function, unicode_literals
 import unittest
+import xbmcaddon
 from apihelper import ApiHelper
 from favorites import Favorites
 from search import Search
 from resumepoints import ResumePoints
-
-xbmc = __import__('xbmc')
-xbmcaddon = __import__('xbmcaddon')
-xbmcgui = __import__('xbmcgui')
-xbmcplugin = __import__('xbmcplugin')
-xbmcvfs = __import__('xbmcvfs')
 
 addon = xbmcaddon.Addon()
 itemsperpage = int(addon.settings.get('itemsperpage'))

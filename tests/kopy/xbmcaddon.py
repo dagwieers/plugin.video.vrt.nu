@@ -6,8 +6,8 @@
 # pylint: disable=invalid-name
 
 from __future__ import absolute_import, division, print_function, unicode_literals
-from xbmc import getLocalizedString
-from xbmcextra import ADDON_ID, ADDON_INFO, addon_settings
+from .xbmc import getLocalizedString
+from .xbmcextra import ADDON_ID, ADDON_INFO, addon_settings
 
 # Ensure the addon settings are retained (as we don't write to disk)
 ADDON_SETTINGS = addon_settings(ADDON_ID)

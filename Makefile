@@ -1,4 +1,4 @@
-export PYTHONPATH := $(CURDIR)/resources/lib:$(CURDIR)/test
+export PYTHONPATH := $(CURDIR)/resources/lib:$(CURDIR)/tests
 PYTHON := python
 
 name = $(shell xmllint --xpath 'string(/addon/@id)' addon.xml)
@@ -36,7 +36,7 @@ tox:
 
 pylint:
 	@echo -e "$(white)=$(blue) Starting sanity pylint test$(reset)"
-	$(PYTHON) -m pylint resources/lib/ test/
+	$(PYTHON) -m pylint resources/lib/ tests/
 
 language:
 	@echo -e "$(white)=$(blue) Starting language test$(reset)"
@@ -59,11 +59,11 @@ unit: clean
 run:
 	@echo -e "$(white)=$(blue) Run CLI$(reset)"
 	$(PYTHON) resources/lib/service_entry.py
-	$(PYTHON) test/run.py $(path)
+	$(PYTHON) tests/run.py $(path)
 
 profile:
 	@echo -e "$(white)=$(blue) Profiling $(white)$(path)$(reset)"
-	$(PYTHON) -m cProfile -o profiling_stats-$(git_branch)-$(git_hash).bin test/run.py $(path)
+	$(PYTHON) -m cProfile -o profiling_stats-$(git_branch)-$(git_hash).bin tests/run.py $(path)
 
 zip: clean
 	@echo -e "$(white)=$(blue) Building new package$(reset)"
@@ -79,4 +79,4 @@ clean:
 	find . -name '*.py[cod]' -type f -delete
 	find . -name '__pycache__' -type d -delete
 	rm -rf .pytest_cache/ .tox/
-	rm -f *.log test/userdata/tokens/*.tkn
+	rm -f *.log tests/userdata/tokens/*.tkn

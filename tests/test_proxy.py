@@ -10,11 +10,6 @@ import sys
 import unittest
 import addon
 
-xbmc = __import__('xbmc')
-xbmcaddon = __import__('xbmcaddon')
-xbmcgui = __import__('xbmcgui')
-xbmcvfs = __import__('xbmcvfs')
-
 plugin = addon.plugin
 
 

@@ -10,13 +10,6 @@ import unittest
 import dateutil.tz
 import addon
 
-
-xbmc = __import__('xbmc')
-xbmcaddon = __import__('xbmcaddon')
-xbmcgui = __import__('xbmcgui')
-xbmcplugin = __import__('xbmcplugin')
-xbmcvfs = __import__('xbmcvfs')
-
 plugin = addon.plugin
 now = datetime.now(dateutil.tz.tzlocal())
 lastweek = now + timedelta(days=-7)

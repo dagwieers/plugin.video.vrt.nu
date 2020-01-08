@@ -150,8 +150,13 @@ class StreamService:
         # Construct api_url and get video json
         if not playertoken:
             return None
-        api_url = api_data.media_api_url + '/videos/' + api_data.publication_id + \
-            api_data.video_id + '?vrtPlayerToken=' + playertoken + '&client=' + api_data.client
+        api_url = '{url}/videos/{pub_id}{vid_id}?vrtPlayerToken={token}&client={client}'.format(
+            url=api_data.media_api_url,
+            pub_id=api_data.publication_id,
+            vid_id=api_data.video_id,
+            token=playertoken,
+            client=api_data.client,
+        )
         return get_url_json(url=api_url)
 
     @staticmethod

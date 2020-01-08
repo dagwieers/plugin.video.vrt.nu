@@ -6,17 +6,12 @@
 
 from __future__ import absolute_import, division, print_function, unicode_literals
 import unittest
+import xbmcaddon
+import xbmcextra
 from apihelper import ApiHelper
 from data import CHANNELS
 from favorites import Favorites
 from resumepoints import ResumePoints
-from xbmcextra import kodi_to_ansi
-
-xbmc = __import__('xbmc')
-xbmcaddon = __import__('xbmcaddon')
-xbmcgui = __import__('xbmcgui')
-xbmcplugin = __import__('xbmcplugin')
-xbmcvfs = __import__('xbmcvfs')
 
 addon = xbmcaddon.Addon()
 itemsperpage = int(addon.settings.get('itemsperpage'))
@@ -132,7 +127,7 @@ class TestApiHelper(unittest.TestCase):
         self.assertFalse(ascending)
         self.assertEqual(content, 'episodes')
         plot = title_items[0].info_dict['plot']
-        print(kodi_to_ansi(plot))
+        print(xbmcextra.kodi_to_ansi(plot))
 
     def test_upnext(self):
         """Test getting next episode (winteruur)"""

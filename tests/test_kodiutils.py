@@ -6,13 +6,9 @@
 
 from __future__ import absolute_import, division, print_function, unicode_literals
 import unittest
+import xbmc
+import xbmcaddon
 import kodiutils
-
-xbmc = __import__('xbmc')
-xbmcaddon = __import__('xbmcaddon')
-xbmcgui = __import__('xbmcgui')
-xbmcplugin = __import__('xbmcplugin')
-xbmcvfs = __import__('xbmcvfs')
 
 addon = xbmcaddon.Addon()
 
@@ -87,6 +83,7 @@ class TestKodiUtils(unittest.TestCase):
         self.assertTrue(isinstance(ret, dict))
 
         ret = kodiutils.jsonrpc(dict(method='Input.Down'))
+        print(ret)
         self.assertTrue(isinstance(ret, list))
         self.assertEqual(len(ret), 1)
 

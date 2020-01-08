@@ -4,7 +4,6 @@
 
 from __future__ import absolute_import, division, unicode_literals
 from contextlib import contextmanager
-from sys import version_info
 
 import xbmc
 import xbmcaddon
@@ -895,6 +894,7 @@ def ttl(kind='direct'):
 
 def get_json_data(response, fail=None):
     """Return json object from HTTP response"""
+    from sys import version_info
     from json import load, loads
     try:
         if (3, 0, 0) <= version_info <= (3, 5, 9):  # the JSON object must be str, not 'bytes'

@@ -11,8 +11,7 @@ import os
 import json
 import time
 import weakref
-from xbmcextra import ADDON_ID, global_settings, import_language
-from utils import to_unicode
+from .xbmcextra import ADDON_ID, global_settings, import_language
 
 LOGLEVELS = ['Debug', 'Info', 'Notice', 'Warning', 'Error', 'Severe', 'Fatal', 'None']
 LOGDEBUG = 0
@@ -273,7 +272,7 @@ def log(msg, level=0):
         color1 = '\033[33;1m'
     elif level == 0:
         color2 = '\033[30;1m'
-    print('{color1}{name}: {color2}{msg}\033[39;0m'.format(name=name, color1=color1, color2=color2, msg=to_unicode(msg)))
+    print('{color1}{name}: {color2}{msg}\033[39;0m'.format(name=name, color1=color1, color2=color2, msg=msg))
 
 
 def setContent(self, content):
@@ -289,11 +288,11 @@ def sleep(timemillis):
 def translatePath(path):
     """A stub implementation of the xbmc translatePath() function"""
     if path.startswith('special://home'):
-        return path.replace('special://home', os.path.join(os.getcwd(), 'test/'))
+        return path.replace('special://home', os.path.join(os.getcwd(), 'tests/'))
     if path.startswith('special://masterprofile'):
-        return path.replace('special://masterprofile', os.path.join(os.getcwd(), 'test/userdata/'))
+        return path.replace('special://masterprofile', os.path.join(os.getcwd(), 'tests/userdata/'))
     if path.startswith('special://profile'):
-        return path.replace('special://profile', os.path.join(os.getcwd(), 'test/userdata/'))
+        return path.replace('special://profile', os.path.join(os.getcwd(), 'tests/userdata/'))
     if path.startswith('special://userdata'):
-        return path.replace('special://userdata', os.path.join(os.getcwd(), 'test/userdata/'))
+        return path.replace('special://userdata', os.path.join(os.getcwd(), 'tests/userdata/'))
     return path

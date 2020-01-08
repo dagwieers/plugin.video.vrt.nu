@@ -6,13 +6,8 @@
 
 from __future__ import absolute_import, division, print_function, unicode_literals
 import unittest
+import xbmcaddon
 from tokenresolver import TokenResolver
-
-xbmc = __import__('xbmc')
-xbmcaddon = __import__('xbmcaddon')
-xbmcgui = __import__('xbmcgui')
-xbmcplugin = __import__('xbmcplugin')
-xbmcvfs = __import__('xbmcvfs')
 
 addon = xbmcaddon.Addon()
 
