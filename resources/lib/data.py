@@ -185,23 +185,30 @@ CHANNELS = [
     dict(
         id='',
         name='vrt-events1',
-        label='VRT Events 1',
+        label='VRT Events stream 1',
         studio='VRT',
         live_stream_id='vualto_events1_geo',
     ),
     dict(
         id='',
         name='vrt-events2',
-        label='VRT Events 2',
+        label='VRT Events stream 2',
         studio='VRT',
         live_stream_id='vualto_events2_geo',
     ),
     dict(
         id='',
         name='vrt-events3',
-        label='VRT Events 3',
+        label='VRT Events stream 3',
         studio='VRT',
         live_stream_id='vualto_events3_geo',
+    ),
+    dict(
+        id='',
+        name='vrt-events4',
+        label='VRT Events stream 4',
+        studio='VRT',
+        live_stream_id='vualto_events4_geo',
     ),
 ]
 
